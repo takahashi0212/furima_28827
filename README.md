@@ -13,12 +13,9 @@
 | first_name_kana  | string | null: false |
 | birth_day        | string | null: false |
 
-## login テーブル
-
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| emai     | references | null: false, foreign_key: true |
-| password | references | null: false, foreign_key: true |
+## Association
+has_many :buyer
+has_many :product
 
 ## product テーブル
 
@@ -27,12 +24,15 @@
 | image       | string     | null: false                    |
 | name        | string     | null: false                    |
 | description | text       | null: false                    |
-| category    | references | null: false, foreign_key: true |
-| status      | references | null: false, foreign_key: true |
-| cost        | references | null: false, foreign_key: true |
-| zone        | references | null: false, foreign_key: true |
-| days        | refarences | null: false, foreign_key: ture |
-| price       | refarences | null: false, foreign_key: ture |
+| category    | string     | null: false                    |
+| status      | string     | null: false                    |
+| cost        | string     | null: false                    |
+| zone        | string     | null: false                    |
+| days        | string     | null: false                    |
+| price       | integer    | null: false                    |
+
+## Association
+has_many :users
 
 ## buyer テーブル
 
@@ -43,4 +43,9 @@
 | city         | string      | null: false                    |
 | adress       | string      | null: false                    |
 | building     | string      |                                |
-| phone_number | integer     | null:false                     |
+| phone_number | integer     | null: false                    |
+| user_id      | references  | null: false, foreign_key: true |
+| brand_id     | references  | null: false, foreign_key: true |
+
+## Association
+has_many :users
