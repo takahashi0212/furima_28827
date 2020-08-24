@@ -11,7 +11,7 @@
 | first_name       | string | null: false |
 | family_name_kana | string | null: false |
 | first_name_kana  | string | null: false |
-| birth_day        | string | null: false |
+| birth_day        | date   | null: false |
 
 ## Association
 has_many :buyers
@@ -30,10 +30,10 @@ has_many :products
 | zone        | integer    | null: false                    |
 | days        | integer    | null: false                    |
 | price       | integer    | null: false                    |
-｜user_id    |
 
 ## Association
-belongs_to :users
+has_one :users
+has_many :purchases
 
 ## buyers テーブル
 
@@ -48,16 +48,16 @@ belongs_to :users
 | user         | references  | null: false, foreign_key: true |
 
 ## Association
-has_many :users
+has_many :purchases
 
-## purchase テーブル
+## purchases テーブル
 
-| Column  | Type       |  Options    |
-| ------- | ---------- | ----------- |
-| user    | references | null: false |
-| product | references | null: false |
+| Column  | Type       |  Options                       |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| product | references | null: false, foreign_key: true |
 
 ## Association
-belongs_to :users
-belongs_to :products
-has_one :buyers
+has_many :users
+has_many :products
+belongs_to :buyers
