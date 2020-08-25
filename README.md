@@ -30,34 +30,35 @@ has_many :products
 | zone        | integer    | null: false                    |
 | days        | integer    | null: false                    |
 | price       | integer    | null: false                    |
+| user_id     | references | null: false, foreign_key: true |
 
 ## Association
-has_one :users
-has_many :purchases
+belongs_to :user
+has_one :purchases
 
 ## buyers テーブル
 
 | Column       | Type        | Options                        |
 | ------------ | ----------- | ------------------------------ |
-| post_code    | integer     | null: false                    |
+| post_code    | string      | null: false                    |
 | prefecture   | integer     | null: false                    |
 | city         | string      | null: false                    |
 | adress       | string      | null: false                    |
 | building     | string      |                                |
-| phone_number | integer     | null: false                    |
-| user         | references  | null: false, foreign_key: true |
+| phone_number | string      | null: false                    |
+| purchases_id | references  | null: false, foreign_key: true |
 
 ## Association
-has_many :purchases
+belongs_to :purchases
 
 ## purchases テーブル
 
-| Column  | Type       |  Options                       |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| product | references | null: false, foreign_key: true |
+| Column      | Type       |  Options                       |
+| ----------- | ---------- | ------------------------------ |
+| userrs_id   | references | null: false, foreign_key: true |
+| products_id | references | null: false, foreign_key: true |
 
 ## Association
-has_many :users
-has_many :products
-belongs_to :buyers
+belongs_to :users
+belongs_to :products
+has_one :buyers
