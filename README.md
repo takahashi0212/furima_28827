@@ -30,11 +30,11 @@ has_many :products
 | zone        | integer    | null: false                    |
 | days        | integer    | null: false                    |
 | price       | integer    | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 
 ## Association
 belongs_to :user
-has_one :purchases
+has_one :purchase
 
 ## buyers テーブル
 
@@ -46,7 +46,7 @@ has_one :purchases
 | adress       | string      | null: false                    |
 | building     | string      |                                |
 | phone_number | string      | null: false                    |
-| purchases_id | references  | null: false, foreign_key: true |
+| purchases    | references  | null: false, foreign_key: true |
 
 ## Association
 belongs_to :purchases
@@ -55,10 +55,10 @@ belongs_to :purchases
 
 | Column      | Type       |  Options                       |
 | ----------- | ---------- | ------------------------------ |
-| userrs_id   | references | null: false, foreign_key: true |
-| products_id | references | null: false, foreign_key: true |
+| users      | references | null: false, foreign_key: true |
+| products    | references | null: false, foreign_key: true |
 
 ## Association
-belongs_to :users
-belongs_to :products
-has_one :buyers
+belongs_to :user
+belongs_to :product
+has_one :buyer
