@@ -49,14 +49,14 @@ has_one :purchase
 | purchases    | references  | null: false, foreign_key: true |
 
 ## Association
-belongs_to :purchases
+belongs_to :purchase
 
 ## purchases テーブル
 
 | Column      | Type       |  Options                       |
 | ----------- | ---------- | ------------------------------ |
-| users      | references | null: false, foreign_key: true |
-| products    | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
+| product     | references | null: false, foreign_key: true |
 
 ## Association
 belongs_to :user
