@@ -21,6 +21,3 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:image, :name, :description, :category_id, :status_id, :cost_id, :zone_id, :days_id, :price).merge(user_id: current_user.id)
   end
 end
-
-
-#"product"=>{"hoge"=>"1000", "category_id"=>"3", "status_id"=>"3", "cost_id"=>"2", "zone_id"=>"1", "days_id"=>"2"}

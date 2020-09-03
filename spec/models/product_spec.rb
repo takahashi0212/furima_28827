@@ -28,29 +28,29 @@ RSpec.describe Product, type: :model do
       expect(@product.errors.full_messages).to include("Description can't be blank")
     end
     it "カテゴリーの情報が空では登録できない" do
-      @product.category_id = nil
+      @product.category_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include("Category can't be blank")
+      expect(@product.errors.full_messages).to include("Category must be other than 1")
     end
     it "商品の状態についての情報が空では登録できない" do
-      @product.status_id = nil
+      @product.status_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include("Status can't be blank")
+      expect(@product.errors.full_messages).to include("Status must be other than 1")
     end
     it "配送料の負担についての情報が空では登録できない" do
-      @product.cost_id = nil
+      @product.cost_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include("Cost can't be blank")
+      expect(@product.errors.full_messages).to include("Cost must be other than 1")
     end
     it "発送元の地域についての情報が空では登録できない" do
-      @product.zone_id = nil
+      @product.zone_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include("Zone can't be blank")
+      expect(@product.errors.full_messages).to include("Zone must be other than 1")
     end
     it "発送までの日数についての情報が空では登録できない" do
-      @product.days_id = nil
+      @product.days_id = 1
       @product.valid?
-      expect(@product.errors.full_messages).to include( "Days can't be blank")
+      expect(@product.errors.full_messages).to include("Days must be other than 1")
     end
     it "価格の情報が空では登録できない" do
       @product.price = nil
