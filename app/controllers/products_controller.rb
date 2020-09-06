@@ -19,6 +19,22 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.valid?
+      @product.save
+      redirect_to product_path and return
+    else
+      render 'edit'
+    end
+  end
+
   private
   def product_params
     params.require(:product).permit(:image, :name, :description, :category_id, :status_id, :cost_id, :zone_id, :days_id, :price).merge(user_id: current_user.id)
