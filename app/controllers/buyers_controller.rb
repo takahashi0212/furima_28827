@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @buyer = Buyer.new
     @product = Product.find(params[:product_id])
