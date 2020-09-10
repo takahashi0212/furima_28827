@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
 
   def index
+    @buyer = Buyer.new
     @product = Product.find(params[:product_id])
   end
 
