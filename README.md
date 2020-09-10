@@ -34,6 +34,7 @@ has_many :products
 
 ## Association
 belongs_to :user
+has_one :buyers
 has_one :purchase
 
 ## buyers テーブル
@@ -41,7 +42,7 @@ has_one :purchase
 | Column       | Type        | Options                        |
 | ------------ | ----------- | ------------------------------ |
 | post_code    | string      | null: false                    |
-| prefecture   | integer     | null: false                    |
+| zone         | integer     | null: false                    |
 | city         | string      | null: false                    |
 | adress       | string      | null: false                    |
 | building     | string      |                                |
@@ -50,6 +51,7 @@ has_one :purchase
 
 ## Association
 belongs_to :purchase
+belongs_to :product
 
 ## purchases テーブル
 
