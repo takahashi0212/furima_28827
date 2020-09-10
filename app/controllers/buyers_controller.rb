@@ -3,6 +3,11 @@ class BuyersController < ApplicationController
   def index
     @buyer = Buyer.new
     @product = Product.find(params[:product_id])
+    if current_user.id == @product.user.id
+      redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   def create
@@ -31,5 +36,6 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
+
 
 end
