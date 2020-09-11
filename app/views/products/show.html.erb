@@ -25,31 +25,6 @@
       </span>
     </div>
 
-    <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
-    <% if @product.purchase%>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      </li>
-    <%end%>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合のダミー %>
-
-
 <% if user_signed_in? && current_user.id == @product.user_id %>
     <%= link_to '商品の編集', edit_product_path, method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
