@@ -1,8 +1,8 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_buyer, only: [:index, :create]
   def index
     @buyer = Buyer.new
-    @product = Product.find(params[:product_id])
     if current_user.id == @product.user.id
       redirect_to root_path
     else
@@ -11,17 +11,20 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @buyer = BuyerForm.new(buyer_params)
     if @buyer.valid?
       pay_product
       @buyer.save
       return redirect_to root_path
     else
-      @product = Product.find(params[:product_id])
       render 'index'
     end
   end
+
+  def set_buyer
+    @product = Product.find(params[:product_id])
+  end
+
 
   private
   def buyer_params

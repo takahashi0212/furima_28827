@@ -24,7 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
       exp_year: `20${formData.get("exp_year")}`,
       cvc: formData.get("cvc"),
     };
-    //console.log(card)
 
     Payjp.createToken(card, (status, response) => {
       console.log(response.error)

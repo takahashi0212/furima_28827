@@ -17,6 +17,11 @@ RSpec.describe BuyerForm, type: :model do
     end
 
     context '商品購入がうまくいかないとき' do
+      it '郵便番号の情報が空だと購入できない' do
+        @buyer.post_code = ""
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Post code can't be blank")
+      end
       it '郵便番号にハイフン(-)がないと登録できない' do
         @buyer.post_code = "1234567"
         @buyer.valid?
@@ -51,6 +56,11 @@ RSpec.describe BuyerForm, type: :model do
         @buyer.phone_number = "000000000000"
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'トークンの情報が空だと購入できない' do
+        @buyer.token = ""
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
