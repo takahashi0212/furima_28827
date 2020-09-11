@@ -25,6 +25,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one :purchase
+  has_one :buyers
   has_one_attached :image
 
 end
