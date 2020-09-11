@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_buyer, only: [:index, :create]
+  before_action :product_sold?, only: [:index]
   def index
     @buyer = Buyer.new
     if current_user.id == @product.user.id
@@ -29,6 +30,12 @@ class BuyersController < ApplicationController
   private
   def buyer_params
     params.permit(:price, :post_code, :zone_id, :city, :adress, :building, :phone_number, :token, :product_id).merge(user_id: current_user.id)
+  end
+
+  def product_sold?
+    if @product.purchase
+      redirect_to root_path
+    end
   end
 
   def pay_product
